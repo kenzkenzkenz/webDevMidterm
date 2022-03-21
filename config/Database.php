@@ -7,6 +7,7 @@
         $db_name = ltrim($dbparts['path'], '/');
         $username = $dbparts['user'];
         $password = $dbparts['pass'];
+        private $db;
 
         public function connect(){
             $this->db = null;
