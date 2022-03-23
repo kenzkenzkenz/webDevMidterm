@@ -7,6 +7,11 @@
         header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
     }
 
+    include_once '../../config/Database.php';
+    include_once '../../models/Quote.php';
+    include_once '../../models/Author.php';
+    include_once '../../models/Category.php';
+
     $isId = filter_input(INPUT_GET, "id"); //assign if id
     $isAuthorId = filter_input(INPUT_GET, "authorId"); //if authorId
     $isCatId = filter_input(INPUT_GET, "categoryId"); //assign cat id
