@@ -29,18 +29,18 @@
         'category' => $quote->category
     );
 
-    // public function isValid($id, $model){
-    //     $model->id = $id;
-    //     $modelResult = $model->read_single();
-    //     return $modelResult;
-    // }
+    public function isValid($id, $model){
+        $model->id = $id;
+        $modelResult = $model->read_single();
+        return $modelResult;
+    }
 
-    // $idExists = isValid($id, $quote);
+    $idExists = isValid($id, $quote);
 
-    // if($idExists){
+    if($idExists){
         print_r(json_encode($quote_arr));
-    // } else {
-    //     echo json_encode(
-    //         array('message' => 'No Quotes Found')
-    //     );
-    // }
+    } else {
+        echo json_encode(
+            array('message' => 'No Quotes Found')
+        );
+    }

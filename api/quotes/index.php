@@ -52,11 +52,11 @@
     }
 
     //Post/Create a quote
-    elseif ($method === 'CREATE'){
+    elseif ($method === 'POST'){
         include 'create.php';
     }
     //Put/Update a quote
-    elseif($method === 'UPDATE'){
+    elseif($method === 'PUT'){
         include 'update.php';
     }
     //Delete a quote
