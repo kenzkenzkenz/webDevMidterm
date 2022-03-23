@@ -62,26 +62,26 @@
                 LEFT JOIN
                     categories ON categories.id = quotes.categoryId
                 WHERE
-                    quotes.id = ?
-                LIMIT 0,1';
+                    quotes.id = :id';
 
-        //Prepare statement
-        $stmt = $this->conn->prepare($query);
+            //Prepare statement
+            $stmt = $this->conn->prepare($query);
 
-        //Bind ID
-        $stmt->bindParam(1, $this->id);
+            //Bind ID
+            $stmt->bindParam(':id', $this->id);
 
-        //Execute query
-        $stmt->execute();
-        
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            //Execute query
+            $stmt->execute();
+            
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        //Set properties
-        $this->id = $row['id'];
-        $this->quote = $row['quote'];
-        $this->author = $row['author'];
-        $this->category = $row['category'];
+            //Set properties
+            $this->id = $row['id'];
+            $this->quote = $row['quote'];
+            $this->author = $row['author'];
+            $this->category = $row['category'];
         }
+
 
         
     // Create Post
@@ -183,5 +183,94 @@
         printf("Error: %s.\n", $stmt->error);
 
         return false;
+    }
+
+    // //is valid function
+    // function isValid($id, $model){
+    //     $model->id = $id;
+    //     $modelResult = $model->read_single();
+    //     return $modelResult;
+    // }
+
+    public function readQuotesByAuthorId(){
+        //Create query
+        $query = 'SELECT
+                quotes.id,
+                quotes.quote,
+                authors.author,
+                categories.category
+            FROM
+                ' . $this->table . '
+            LEFT JOIN
+                authors ON quotes.authorId = authors.id
+            LEFT JOIN
+                categories ON quotes.categoryId = categories.id
+            WHERE
+                quotes.authorId = :authorId';
+
+        //Prepare statement
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(':authorId', $this->authorId);
+
+        //Execute query
+        $stmt->execute();
+
+        return $stmt;
+    }
+
+    public function readQuotesByCategoryId(){
+        //Create query
+        $query = 'SELECT
+                quotes.id,
+                quotes.quote,
+                authors.author,
+                categories.category
+            FROM
+                ' . $this->table . '
+            LEFT JOIN
+                authors ON quotes.authorId = authors.id
+            LEFT JOIN
+                categories ON quotes.categoryId = categories.id
+            WHERE
+                quotes.categoryId = :categoryId';
+
+        //Prepare statement
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(':categoryId', $this->categoryId);
+
+        //Execute query
+        $stmt->execute();
+
+        return $stmt;
+    }
+
+    public function readQuotesByCombo(){
+        //Create query
+        $query = 'SELECT
+                quotes.id,
+                quotes.quote,
+                authors.author,
+                categories.category
+            FROM
+                ' . $this->table . '
+            LEFT JOIN
+                authors ON quotes.authorId = authors.id
+            LEFT JOIN
+                categories ON quotes.categoryId = categories.id
+            WHERE
+                quotes.authorId = :authorId && quotes.categoryId = :categoryId';
+
+        //Prepare statement
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(':authorId', $this->authorId);
+        $stmt->bindParam(':categoryId', $this->categoryId);
+
+        //Execute query
+        $stmt->execute();
+
+        return $stmt;
     }
 }

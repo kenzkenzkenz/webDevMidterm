@@ -6,6 +6,7 @@
     include_once '../../config/Database.php';
     include_once '../../models/Author.php';
 
+
     //Instantiate DB & connect
     $database = new Database();
     $db = $database->connect();
@@ -16,7 +17,7 @@
     // Get ID
     $author->id = isset($_GET['id']) ? $_GET['id'] : die();
 
-    //Get quote
+    //Get author
     $author->read_single();
 
     //Create array

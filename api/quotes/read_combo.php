@@ -1,4 +1,7 @@
 <?php
+
+//this file is a copy of /quotes/read.php except where noted
+
     //Headers
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
@@ -13,8 +16,12 @@
     //Instantiate quote object
     $quote = new Quote($db);
 
+    $quote->authorId = isset($_GET['authorId']) ? $_GET['authorId'] : die(); //added
+    $quote->categoryId = isset($_GET['categoryId']) ? $_GET['categoryId'] : die(); //added
+
     //Quote query
-    $result = $quote->read();
+    $result = $quote->readQuotesByCombo(); //changed from read() to new function
+    
     //Get row count
     $num = $result->rowCount();
 
@@ -22,7 +29,6 @@
     if($num > 0){
         //Quote array
         $quotes_arr = array();
-        //$quotes_arr['data'] = array();
 
         while($row = $result->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
@@ -32,7 +38,6 @@
                 'quote' => html_entity_decode($quote),
                 'author' => $author,
                 'category' => $category
-
             );
 
             //Push to "data"

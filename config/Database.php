@@ -1,17 +1,11 @@
 <?php
     class Database {
         //Database Parameters
+        private $host = 'localhost';
+        private $db_name = 'quotesdb';
+        private $username = 'root';
+        private $password = '';
         private $conn;
-        private $url;
-
-        $dbparts = parse_url($url);
-        $this->url = getenv('JAWSDB_URL');
-        $dbparts = parse_url($this->url);
-        
-        $host = $dbparts['host'];
-        $db_name = ltrim($dbparts['path'], '/');
-        $username = $dbparts['user'];
-        $password = $dbparts['pass'];
 
         //Database Connect
         public function connect(){

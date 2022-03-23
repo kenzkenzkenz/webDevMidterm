@@ -23,7 +23,7 @@
     $quote->category = $data->category;
 
 
-    //Creat post
+    //Create post
     if($quote->create()){
         echo json_encode(
             array('message' => 'Quote Created')
