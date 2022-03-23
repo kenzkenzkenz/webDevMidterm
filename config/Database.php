@@ -14,12 +14,12 @@
             $dbparts = parse_url($this->url);
             
             $host = $dbparts['host'];
-            $db_name = ltrim($dbparts['path'], '/');
+            $dbname = ltrim($dbparts['path'], '/');
             $username = $dbparts['user'];
             $password = $dbparts['pass'];
 
             try {
-                $this->conn = new PDO('mysql:host=' . $host . ';db_name=' . $db_name, $username, $password);
+                $this->conn = new PDO('mysql:host=' . $host . ';dbname=' . $dbname, $username, $password);
                 $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             }catch(PDOException $e){
