@@ -17,8 +17,6 @@
     $isCatId = filter_input(INPUT_GET, "categoryId"); //assign cat id
 
     // $exists = isValid($id, $quote);
-
-
     // //Determine id type
     // if (isset($_GET['id'])){
     //     $varId = true; //id
@@ -37,6 +35,10 @@
         include 'read_single.php';
     }
 
+    elseif ($method == 'GET' && !$_GET['id']) {
+        include 'read.php'; //if no id's, show all quotes
+    }
+
     elseif ($isAuthorId && !$isCatId){//just authorId
         include 'read_author.php';
     }
@@ -49,11 +51,8 @@
         include 'read_combo.php';
     }
 
-    else include 'read.php'; //if no id's, show all quotes
-    
-
     //Post/Create a quote
-    if ($method === 'POST'){
+    elseif ($method === 'POST'){
         include 'create.php';
     }
     //Put/Update a quote
