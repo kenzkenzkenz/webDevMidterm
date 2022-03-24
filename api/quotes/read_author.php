@@ -18,7 +18,7 @@
     //Instantiate quote object
     $quote = new Quote($db);
 
-    $quote->id = isset($_GET['id']) ? $_GET['id'] : die(); //added
+    $quote->author = isset($_GET['id']) ? $_GET['id'] : die(); //added
 
     //Quote query
     $result = $quote->readQuotesByAuthorId(); //changed from read() to new function
@@ -45,7 +45,7 @@
         }
 
         if($quote->id !== null){
-            print_r(json_encode($quote_item));
+            print_r(json_encode($quotes_arr));
         } else {
             // No quotes
             echo json_encode(
