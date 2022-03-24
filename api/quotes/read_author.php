@@ -47,7 +47,7 @@
     }
 
     if($quote->id !== null){
-        print_r(json_encode($quotes_arr));
+        print_r(json_encode($quote_item));
     } else {
         // No quotes
         echo json_encode(
