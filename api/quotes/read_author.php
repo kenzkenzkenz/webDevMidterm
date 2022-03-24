@@ -34,10 +34,10 @@
             extract($row);
 
             $quote_item = array(
-                'id' => $quote->id,
-                'quote' => html_entity_decode($quote->quote),
-                'author' => $quote->author,
-                'category' => $quote->category
+                'id' => $id,
+                'quote' => html_entity_decode($quote),
+                'author' => $author,
+                'category' => $category
             );
 
             //Push to "data"
