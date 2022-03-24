@@ -206,12 +206,12 @@
             LEFT JOIN
                 categories ON quotes.categoryId = categories.id
             WHERE
-                quotes.authorId = :authorId';
+                quotes.authorId = ?';
 
         //Prepare statement
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bindParam(':authorId', $this->authorId);
+        $stmt->bindParam(1, $this->authorId);
 
         //Execute query
         $stmt->execute();

@@ -18,8 +18,8 @@
     //Instantiate quote object
     $quote = new Quote($db);
 
-    $quote->authorId = isset($_GET['id']) ? $_GET['id'] : die(); //added
-    $quote->categoryId = isset($_GET['id']) ? $_GET['id'] : die(); //added
+    $quote->author = isset($_GET['id']) ? $_GET['id'] : die(); //added
+    $quote->category = isset($_GET['id']) ? $_GET['id'] : die(); //added
 
     //Quote query
     $result = $quote->readQuotesByCombo(); //changed from read() to new function
@@ -50,9 +50,9 @@
         echo json_encode($quotes_arr);
     }
     
-    else {
-        // No quotes
-        echo json_encode(
-            array('message' => 'No Quotes Found')
-        );
-    }
+    // else {
+    //     // No quotes
+    //     echo json_encode(
+    //         array('message' => 'No Quotes Found')
+    //     );
+    // }

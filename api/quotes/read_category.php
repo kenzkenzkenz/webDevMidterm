@@ -18,7 +18,7 @@
     //Instantiate quote object
     $quote = new Quote($db);
 
-    $quote->categoryId = isset($_GET['id']) ? $_GET['id'] : die(); //added
+    $quote->category = isset($_GET['id']) ? $_GET['id'] : die(); //added
 
     //Quote query
     $result = $quote->readQuotesByCategoryId(); //changed from read() to new function
@@ -48,9 +48,9 @@
         echo json_encode($quotes_arr);
     }
     
-    else {
-        // No quotes
-        echo json_encode(
-            array('message' => 'categoryId Not Found')
-        );
-    }
+    // else {
+    //     // No quotes
+    //     echo json_encode(
+    //         array('message' => 'categoryId Not Found')
+    //     );
+    // }

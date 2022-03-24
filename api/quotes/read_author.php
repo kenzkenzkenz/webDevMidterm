@@ -18,7 +18,7 @@
     //Instantiate quote object
     $quote = new Quote($db);
 
-    $quote->authorId = isset($_GET['id']) ? $_GET['id'] : die(); //added
+    $quote->author = isset($_GET['id']) ? $_GET['id'] : die(); //added
 
     //Quote query
     $result = $quote->readQuotesByAuthorId(); //changed from read() to new function
@@ -48,9 +48,9 @@
         echo json_encode($quotes_arr);
     }
     
-    else {
-        // No quotes
-        echo json_encode(
-            array('message' => 'authorId Not Found')
-        );
-    }
+    // else {
+    //     // No quotes
+    //     echo json_encode(
+    //         array('message' => 'authorId Not Found')
+    //     );
+    // }

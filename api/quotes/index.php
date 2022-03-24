@@ -31,11 +31,11 @@
     // } else $varCategoryId = false;
 
 
-    if ($isId){//just id
+    if ($method == 'GET' && $isId){//just id
         include 'read_single.php';
     }
 
-    elseif ($method == 'GET' && !$_GET['id']) {
+    elseif ($method == 'GET' && !$isId) {
         include 'read.php'; //if no id's, show all quotes
     }
 
