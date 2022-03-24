@@ -16,21 +16,6 @@
     $isAuthorId = filter_input(INPUT_GET, "authorId"); //if authorId
     $isCatId = filter_input(INPUT_GET, "categoryId"); //assign cat id
 
-    // $exists = isValid($id, $quote);
-    // //Determine id type
-    // if (isset($_GET['id'])){
-    //     $varId = true; //id
-    // } else $varId = false;
-
-    // if (isset($_GET['authorId'])){
-    //     $varAuthorId = true; //authorId
-    // } else $varAuthorId = false;
-
-    // if (isset($_GET['categoryId'])){
-    //     $varCategoryId = true; //categoryId
-    // } else $varCategoryId = false;
-
-
     if ($method == 'GET' && $isId){//just id
         include 'read_single.php';
     }
@@ -39,17 +24,20 @@
         include 'read.php'; //if no id's, show all quotes
     }
 
-    elseif ($isAuthorId && !$isCatId){//just authorId
+    elseif ($method == 'GET' && $isAuthorId){//just authorId
         include 'read_author.php';
     }
 
-    elseif (!$isAuthorId && $isCatId){ //just categoryId
+    elseif ($method == 'GET' && $isCatId){ //just categoryId
         include 'read_category.php';
+        if($isAuthorId){ //both authorId and categoryId
+            include 'read_combo.php';
+        }
     }
 
-    elseif ($isAuthorId && $isCatId){ //both authorId and categoryId
-        include 'read_combo.php';
-    }
+    // elseif ($isAuthorId && $isCatId){ //both authorId and categoryId
+    //     include 'read_combo.php';
+    // }
 
     //Post/Create a quote
     elseif ($method === 'POST'){
