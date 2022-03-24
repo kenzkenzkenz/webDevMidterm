@@ -45,12 +45,12 @@
         }
 
         //Convert to JSON and output
-        echo json_encode($quotes_arr);
+        print_r(json_encode($quotes_arr));
     }
     
-    // else {
-    //     // No quotes
-    //     echo json_encode(
-    //         array('message' => 'authorId Not Found')
-    //     );
-    // }
+    else {
+        // No quotes
+        echo json_encode(
+            array('message' => 'authorId Not Found')
+        );
+    }

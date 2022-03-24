@@ -45,12 +45,12 @@
         }
 
         //Make JSON
-        echo json_encode($quotes_arr);
+        print_r(json_encode($quotes_arr));
     }
     
-    // else {
-    //     // No quotes
-    //     echo json_encode(
-    //         array('message' => 'categoryId Not Found')
-    //     );
-    // }
+    else {
+        // No quotes
+        echo json_encode(
+            array('message' => 'categoryId Not Found')
+        );
+    }
