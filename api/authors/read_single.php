@@ -16,7 +16,7 @@
     $author = new Author($db);
 
     // Get ID
-    $author->id = isset($_GET['authorId']) ? $_GET['authorId'] : die();
+    $author->id = isset($_GET['id']) ? $_GET['id'] : die();
 
     //Get author
     $author->read_single();
