@@ -18,7 +18,7 @@
     //Instantiate quote object
     $quote = new Quote($db);
 
-    $quote->author = isset($_GET['id']) ? $_GET['id'] : die(); //added
+    $quote->authorId = isset($_GET['authorId']) ? $_GET['authorId'] : die(); //added
 
     //Quote query
     $result = $quote->readQuotesByAuthorId(); //changed from read() to new function
