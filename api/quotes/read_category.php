@@ -18,7 +18,7 @@
     //Instantiate quote object
     $quote = new Quote($db);
 
-    $quote->categoryId = isset($_GET['id']) ? $_GET['id'] : die(); //added
+    $quote->categoryId = isset($_GET['categoryId']) ? $_GET['categoryId'] : die(); //added
 
     //Quote query
     $result = $quote->readQuotesByCategoryId(); //changed from read() to new function
