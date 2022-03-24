@@ -48,9 +48,11 @@
 
         //Convert to JSON and output
         echo json_encode($quotes_arr);
-    } else {
-        // No quotes
-        echo json_encode(
-            array('message' => 'No Quotes Found')
-        );
     }
+    
+    // else {
+    //     // No quotes
+    //     echo json_encode(
+    //         array('message' => 'No Quotes Found')
+    //     );
+    // }
